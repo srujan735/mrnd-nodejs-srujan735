@@ -1,8 +1,8 @@
 // This test case is trying to hit an invalid URL.
 // Fix the assertions below so they all pass.
 describe("HttpIntro Test Suite", function(){
-	var request = require('request');
-	// var request = require('C:/Program Files/nodejs/node_modules/npm/node_modules/request');
+	//xvar request = require('request');
+	var request = require('C:/Program Files/nodejs/node_modules/npm/node_modules/request');
 	jasmine.getEnv().defaultTimeoutInterval = 5000;
 
 	it("IDontKnowBill_Gates",function(done){
@@ -14,10 +14,9 @@ describe("HttpIntro Test Suite", function(){
     		 function(error, response, body){
 
 			// console.log(response);
-			expect(response.statusCode).toBe(200);
-			expect(response.statusMessage).toBe('OK');
-			expect(response.headers["content-type"]).toBe("text/html");
-
+			expect(response.statusCode).toBe(404);
+			expect(response.statusMessage).toBe('Not Found');
+			expect(response.headers["content-type"]).toBe("text/html; charset=UTF-8");
 			done();
     	});
     });
@@ -33,9 +32,9 @@ describe("HttpIntro Test Suite", function(){
 	    		 function(error, response, body){
 
 				// console.log(response);
-				expect(response.statusCode).toBe(404);
-				expect(response.statusMessage).toBe('Not Found');
-				expect(response.headers["content-type"]).toBe("text/html; charset=UTF-8");
+				expect(response.statusCode).toBe(400);
+				expect(response.statusMessage).toBe('Bad Request');
+				expect(response.headers["content-type"]).toBe("application/json; charset=utf-8");
 
 				done();
 	    });
@@ -52,9 +51,9 @@ describe("HttpIntro Test Suite", function(){
 	    		 function(error, response, body){
 
 				// console.log(response);
-				expect(response.statusCode).toBe(404);
-				expect(response.statusMessage).toBe('Not Found');
-				expect(response.headers["content-type"]).toBe("text/html; charset=UTF-8");
+				expect(response.statusCode).toBe(200);
+				expect(response.statusMessage).toBe('OK');
+				expect(response.headers["content-type"]).toBe("application/json; charset=UTF-8");
 
 				done();
 	    });
@@ -73,7 +72,7 @@ describe("HttpIntro Test Suite", function(){
 	    		 function(error, response, body){
 
 				//console.log(response);
-				expect(body.sys.country).toBe("IN");
+				expect(ide.sys.country).toBe("IN");
 
 				done();
 		    });
